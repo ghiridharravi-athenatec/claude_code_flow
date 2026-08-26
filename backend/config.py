@@ -1,4 +1,4 @@
-"""Environment-driven configuration for the CDI Scorer backend."""
+"""Environment-driven configuration for the Clinical Documentation Integrity Scorer backend."""
 
 from __future__ import annotations
 

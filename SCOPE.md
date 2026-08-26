@@ -1,4 +1,4 @@
-# SCOPE.md — Medical Record Validator (CDI Scorer)
+# SCOPE.md — Medical Record Validator (Clinical Documentation Integrity Scorer)
 
 ## Problem Statement (as given)
 Build a medical record validation tool that checks records against a predefined rubric.

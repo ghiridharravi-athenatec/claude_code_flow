@@ -80,7 +80,7 @@ function App() {
     return (
       <div className="app">
         <header>
-          <h1>CDI Scorer</h1>
+          <h1>Clinical Documentation Integrity Scorer</h1>
           <p>Medical Record Validator</p>
         </header>
         <ApiKeyGate onSubmit={setApiKey} />
@@ -92,7 +92,7 @@ function App() {
   return (
     <div className="app">
       <header>
-        <h1>CDI Scorer</h1>
+        <h1>Clinical Documentation Integrity Scorer</h1>
         <p>Medical Record Validator</p>
       </header>
 

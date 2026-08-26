@@ -1,4 +1,4 @@
-# SPEC.md — Medical Record Validator (CDI Scorer)
+# SPEC.md — Medical Record Validator (Clinical Documentation Integrity Scorer)
 This is a binding implementation contract. Every decision below is final for v1 unless SCOPE.md is revisited. Where SCOPE.md left a default, this document inherits it without re-litigating it.
 
 ---
