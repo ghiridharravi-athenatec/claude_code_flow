@@ -1,3 +1,7 @@
+## Run the Application in Google Colab
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ghiridharravi-athenatec/claude_code_flow/blob/main/run_in_colab.ipynb)
+
 # CDI Scorer -- Medical Record Validator
 
 Upload a single medical record (PDF, TXT, or DOCX) and score it against the
