@@ -1,0 +1,177 @@
+{
+  "record_filename": "record_2.txt",
+  "rubric_title": "Medical Record Narrative - Clinical Documentation Integrity Evaluation Rubric",
+  "rubric_version": "1.0",
+  "overall": {
+    "score_points": 0.0,
+    "score_max": 100,
+    "decision": "DEFICIENT",
+    "decision_note": "Does not meet minimum documentation standards. Escalate to CDI leadership and compliance.",
+    "hard_rules_triggered": []
+  },
+  "dimension_results": [
+    {
+      "rubric_id": "R1",
+      "name": "Authentication and Legal Integrity",
+      "weight": 8,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R2",
+      "name": "Chief Complaint and History of Present Illness",
+      "weight": 10,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R3",
+      "name": "Histories, Medications, Allergies and Social Determinants",
+      "weight": 7,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R4",
+      "name": "Examination and Objective Data",
+      "weight": 10,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R5",
+      "name": "Diagnostic Specificity and Coding Support",
+      "weight": 14,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R6",
+      "name": "Clinical Validity and Evidence Support",
+      "weight": 12,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R7",
+      "name": "Medical Decision Making, Assessment and Plan",
+      "weight": 12,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R8",
+      "name": "Internal Consistency and Reconciliation",
+      "weight": 9,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R9",
+      "name": "Note Hygiene, Concision and Abbreviations",
+      "weight": 8,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R10",
+      "name": "Continuity, Timeliness and Transition of Care",
+      "weight": 10,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    }
+  ],
+  "flagged_gaps": [
+    {
+      "rubric_id": "R1",
+      "name": "Authentication and Legal Integrity",
+      "weight": 8,
+      "score": "N/E"
+    },
+    {
+      "rubric_id": "R2",
+      "name": "Chief Complaint and History of Present Illness",
+      "weight": 10,
+      "score": "N/E"
+    },
+    {
+      "rubric_id": "R3",
+      "name": "Histories, Medications, Allergies and Social Determinants",
+      "weight": 7,
+      "score": "N/E"
+    },
+    {
+      "rubric_id": "R4",
+      "name": "Examination and Objective Data",
+      "weight": 10,
+      "score": "N/E"
+    },
+    {
+      "rubric_id": "R5",
+      "name": "Diagnostic Specificity and Coding Support",
+      "weight": 14,
+      "score": "N/E"
+    },
+    {
+      "rubric_id": "R6",
+      "name": "Clinical Validity and Evidence Support",
+      "weight": 12,
+      "score": "N/E"
+    },
+    {
+      "rubric_id": "R7",
+      "name": "Medical Decision Making, Assessment and Plan",
+      "weight": 12,
+      "score": "N/E"
+    },
+    {
+      "rubric_id": "R8",
+      "name": "Internal Consistency and Reconciliation",
+      "weight": 9,
+      "score": "N/E"
+    },
+    {
+      "rubric_id": "R9",
+      "name": "Note Hygiene, Concision and Abbreviations",
+      "weight": 8,
+      "score": "N/E"
+    },
+    {
+      "rubric_id": "R10",
+      "name": "Continuity, Timeliness and Transition of Care",
+      "weight": 10,
+      "score": "N/E"
+    }
+  ],
+  "processed_at": "2026-08-26T10:15:00Z"
+}

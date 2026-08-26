@@ -3,9 +3,12 @@
 Upload a single medical record (PDF, TXT, or DOCX) and score it against the
 fixed, weighted, narrative rubric in `backend/med_record_rubrics.json`. Each
 dimension is scored by the Claude API using **your own** Anthropic API key,
-which the app asks for in the browser before the upload step -- the server
-never holds or configures a key of its own (SPEC.md Section 6). See
-`SCOPE.md` and `SPEC.md` for the binding requirements this app implements.
+which the app asks for in the browser before the upload step -- the key is
+live-checked against the Claude API as soon as you enter it (a no-cost auth
+check, SPEC.md Section 4.1.1), so a bad key is caught immediately rather than
+after you've already picked a file. The server never holds or configures a
+key of its own (SPEC.md Section 6). See `SCOPE.md` and `SPEC.md` for the
+binding requirements this app implements.
 
 ## Backend (Flask)
 
@@ -40,7 +43,7 @@ python -m spacy download en_core_web_lg   # only needed to exercise phi/redact.p
 pytest
 ```
 
-All 40 tests (`test_llm_judge.py`, `test_scorer.py`, `test_golden.py`,
+All 48 tests (`test_llm_judge.py`, `test_scorer.py`, `test_golden.py`,
 `test_extraction.py`, `test_api.py`) were run against this exact codebase
 during development and pass. `test_api.py` monkeypatches `magic.from_buffer` so it doesn't require
 a real record's MIME type to be sniffed correctly by libmagic; the sniffing

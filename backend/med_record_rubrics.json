@@ -1,0 +1,183 @@
+{
+  "title": "Medical Record Narrative - Clinical Documentation Integrity Evaluation Rubric",
+  "version": "1.0",
+  "framework": "AHIMA/ACDIS high-quality documentation criteria, PDQI-9 note-quality domains, CMS 42 CFR 482.24, ICD-10-CM Official Guidelines",
+  "scale": {
+    "min": 1,
+    "max": 5,
+    "meaning": "5 = documentation integrity fully met / lowest compliance and denial risk, 1 = fails the standard / highest risk. Use N/E when the record provides no evidence either way; N/E scores 0 points."
+  },
+  "rubrics": [
+    {
+      "id": "R1",
+      "name": "Authentication and Legal Integrity",
+      "weight": 8,
+      "question": "Is this a legally valid, attributable record?",
+      "reference": "42 CFR 482.24(c)(1); Joint Commission RC.01.01.01",
+      "levels": {
+        "5": "Every entry authenticated with author name, credentials, date and time. Verbal and telephone orders co-signed within policy. Amendments, corrections and late entries explicitly labelled, with the original content preserved and a reason stated. No unattributed sections.",
+        "4": "Fully authenticated with one minor lapse - a verbal order co-signed outside the policy window, or a late entry labelled but without a stated reason.",
+        "3": "Authentication present but inconsistent - one or more entries missing time, credentials or co-signature; or an amendment made without the original preserved.",
+        "2": "Material authentication gaps - a substantive clinical entry unsigned, or an addendum that changes clinical meaning without label, date or attribution.",
+        "1": "The record, or the section carrying the principal diagnosis or a procedure, is unauthenticated or unattributable; or content was altered with no audit trail."
+      },
+      "hard_rule": "A score of 1 on Authentication triggers DEFICIENT regardless of the weighted total."
+    },
+    {
+      "id": "R2",
+      "name": "Chief Complaint and History of Present Illness",
+      "weight": 10,
+      "question": "Does the narrative establish why the patient presented, in clinically usable detail?",
+      "reference": "CMS 1995/1997 E/M documentation guidelines - eight HPI elements; PDQI-9 'thorough'",
+      "levels": {
+        "5": "Chief complaint stated in the patient's own terms. HPI develops the story with four or more of the eight elements (location, quality, severity, duration, timing, context, modifying factors, associated signs and symptoms), a clear chronology, and pertinent positives and negatives. Where the patient is not the historian, the source is identified.",
+        "4": "HPI complete with four or more elements and a clear chronology; one dimension thin - severity not graded, or modifying factors absent.",
+        "3": "HPI present but limited - two or three elements, or a chronology the reader must reconstruct. Orients a clinician but does not support a high-complexity encounter.",
+        "2": "HPI reduced to a phrase or a bare symptom list; no chronology; or carried forward verbatim from a prior encounter without update.",
+        "1": "No usable HPI. The reason for the encounter cannot be determined from the narrative."
+      }
+    },
+    {
+      "id": "R3",
+      "name": "Histories, Medications, Allergies and Social Determinants",
+      "weight": 7,
+      "question": "Is the background needed to interpret this encounter documented?",
+      "reference": "ICD-10-CM Z55-Z65 social determinants; Joint Commission NPSG.03.06.01 medication reconciliation",
+      "levels": {
+        "5": "Past medical, surgical, family and social histories documented and relevant to the presentation. Home medications reconciled with dose, route and frequency. Allergies recorded with the specific reaction. Social determinants relevant to care - housing, food security, transport, caregiver support, substance use - captured in the narrative and carried to codable Z-codes.",
+        "4": "Histories complete and medications reconciled; social determinants noted in the narrative but not carried to a codable Z-code, or one history element thin.",
+        "3": "Core histories present, but the medication list is missing dose or frequency, or allergies are recorded without the reaction, or a social determinant material to the discharge plan is left undocumented.",
+        "2": "Significant omissions - no reconciled medication list, or allergy status absent, or histories carried forward with no evidence of review.",
+        "1": "Histories absent or contradicted elsewhere in the record; or allergy status unknown and unaddressed in a patient who received medication."
+      }
+    },
+    {
+      "id": "R4",
+      "name": "Examination and Objective Data",
+      "weight": 10,
+      "question": "Are the objective findings documented and interpreted, not merely attached?",
+      "reference": "CMS E/M documentation guidelines; PDQI-9 'synthesized'",
+      "levels": {
+        "5": "Examination documented at a level matching the acuity, with pertinent positives and negatives specific to this patient. Vital signs, laboratory and imaging results present, and every abnormal result is explicitly interpreted in the narrative rather than left to stand alone. Trends noted where they inform management.",
+        "4": "Examination and objective data complete; one or two abnormal results reported without narrative interpretation.",
+        "3": "Examination adequate but generic - templated normal systems with no patient-specific findings - or several abnormal results left uninterpreted.",
+        "2": "Examination largely templated or carried forward with no patient-specific content; objective data present as a data dump with no synthesis.",
+        "1": "No meaningful examination documented, or objective findings absent for a presentation that requires them."
+      }
+    },
+    {
+      "id": "R5",
+      "name": "Diagnostic Specificity and Coding Support",
+      "weight": 14,
+      "question": "Can a coder assign the most specific correct codes from this narrative alone?",
+      "reference": "ICD-10-CM Official Guidelines for Coding and Reporting; CMS MS-DRG and HCC capture",
+      "primary_metric": "Proportion of documented diagnoses stated to the highest specificity ICD-10-CM affords",
+      "levels": {
+        "5": "Every diagnosis carries the specificity the code set affords - acuity (acute, chronic, acute-on-chronic), type, stage or severity, laterality - and causal linkage is stated in explicit language ('due to', 'secondary to'). Principal diagnosis identifiable. Present-on-admission status determinable for every secondary diagnosis. Conditions that qualify as a CC or MCC are documented as diagnoses, not merely as abnormal values.",
+        "4": "Specificity strong; one or two diagnoses left at an unspecified code level, or one causal linkage implied by adjacency rather than stated.",
+        "3": "Several diagnoses unspecified where the record itself contains the detail needed to be specific; present-on-admission status indeterminate for one or more secondary diagnoses; or a reportable condition appears only as a laboratory value or a nursing observation.",
+        "2": "Predominantly unspecified codes; principal diagnosis ambiguous between two conditions; or symptoms documented in place of the confirmed diagnoses they belong to.",
+        "1": "The narrative will not support assignment of a principal diagnosis; or diagnoses appear only as 'possible', 'probable' or 'rule out' in an outpatient record, where such statements are not codable."
+      },
+      "hard_rule": "A score of 1 on Diagnostic Specificity floors the outcome at RETURN FOR CLARIFICATION - a claim cannot be built from the record as written."
+    },
+    {
+      "id": "R6",
+      "name": "Clinical Validity and Evidence Support",
+      "weight": 12,
+      "question": "Is every documented diagnosis supported by clinical indicators in the record?",
+      "reference": "ACDIS clinical validation white paper; payer clinical-validation denials (sepsis, acute respiratory failure, encephalopathy and malnutrition are the most denied)",
+      "levels": {
+        "5": "Every diagnosis is supported by documented clinical indicators, treatment and monitoring, and the criteria relied on are visible in the record - organ-dysfunction evidence for sepsis, KDIGO stage for acute kidney injury, GLIM or ASPEN criteria for malnutrition, blood gas or oxygen requirement for acute respiratory failure. No diagnosis appears without support.",
+        "4": "All diagnoses supported; for one, the supporting indicators exist in the data but are not drawn together in the narrative.",
+        "3": "One diagnosis is thinly supported - some indicators present, criteria not met or not stated - leaving it open to a clinical-validation challenge.",
+        "2": "A diagnosis that drives severity or reimbursement is documented on clinical indicators that do not meet accepted criteria, and no clinical rationale is offered.",
+        "1": "A significant diagnosis has no supporting clinical indicator anywhere in the record, or the record actively contradicts it."
+      }
+    },
+    {
+      "id": "R7",
+      "name": "Medical Decision Making, Assessment and Plan",
+      "weight": 12,
+      "question": "Does the record show the clinician's reasoning and a plan that follows from it?",
+      "reference": "AMA/CMS 2021 E/M medical decision making - problems addressed, data reviewed, risk",
+      "levels": {
+        "5": "Assessment names each active problem and states the reasoning connecting findings to conclusions, including differentials considered and excluded. Data reviewed is identified together with its interpretation. The risk of the chosen management is evident. The plan is specific and actionable for every problem, with parameters for escalation.",
+        "4": "Reasoning and plan clear for every active problem; differentials or risk stated more briefly than the complexity warrants.",
+        "3": "Assessment lists problems and the plan is generic - 'continue current management', 'follow up as needed' - without reasoning tying findings to conclusions.",
+        "2": "Assessment is a problem list only, with no reasoning, and the plan leaves one or more active problems unaddressed.",
+        "1": "No assessment or plan, or a plan inconsistent with the documented findings."
+      }
+    },
+    {
+      "id": "R8",
+      "name": "Internal Consistency and Reconciliation",
+      "weight": 9,
+      "question": "Does the record agree with itself?",
+      "reference": "PDQI-9 'internally consistent'; AHIMA documentation integrity",
+      "levels": {
+        "5": "No contradictions across sections, authors or days. Laterality, dates, dosages and diagnoses agree throughout. Resolved problems are marked resolved. Where clinicians disagree, the narrative reconciles them explicitly.",
+        "4": "Consistent apart from one immaterial discrepancy that changes neither clinical meaning nor code assignment.",
+        "3": "One clear internal conflict on a clinically relevant point - differing laterality between the narrative and the imaging report, for example - left unreconciled.",
+        "2": "Multiple unreconciled conflicts, or a conflict on a point that changes code assignment, severity or the discharge plan.",
+        "1": "Contradictions bearing on patient safety - allergy against administered agent, conflicting code status, or a procedure documented on the wrong site - left unaddressed."
+      }
+    },
+    {
+      "id": "R9",
+      "name": "Note Hygiene, Concision and Abbreviations",
+      "weight": 8,
+      "question": "Is the record readable, current, and free of propagated text?",
+      "reference": "PDQI-9 'succinct'; Joint Commission Do Not Use abbreviation list; CMS and ONC copy-paste guidance",
+      "levels": {
+        "5": "Every entry reflects the day it describes. No carried-forward stale findings. Length proportionate to complexity. No prohibited abbreviations (U, IU, QD, QOD, MS, MSO4, MgSO4, trailing zero, missing leading zero). Templates carry patient-specific content.",
+        "4": "Predominantly original; one instance of carried-forward text that remains accurate, or one non-standard abbreviation that is unambiguous in context.",
+        "3": "Noticeable copy-forward - repeated examination or assessment text across days - or one prohibited abbreviation, or a note padded with auto-imported data that obscures the current findings.",
+        "2": "Extensive cloned text across entries, so that the current clinical picture must be extracted from repetition; or multiple prohibited abbreviations.",
+        "1": "Copy-forward has propagated inaccurate information - a finding described that could not have been present on the date recorded."
+      }
+    },
+    {
+      "id": "R10",
+      "name": "Continuity, Timeliness and Transition of Care",
+      "weight": 10,
+      "question": "Was the record completed in time, and does it hand the patient safely to the next clinician?",
+      "reference": "42 CFR 482.24(c)(4)(viii) and 482.24(c)(2)(viii); Joint Commission RC.01.04.01",
+      "levels": {
+        "5": "Entries authored contemporaneously with the care described, and the record completed within the regulatory window. The discharge summary carries every required element - reason for hospitalisation, significant findings, procedures and treatment provided, condition at discharge, reconciled discharge medications, follow-up arrangements naming provider and interval, and results still pending at discharge. Patient instructions documented in comprehensible terms.",
+        "4": "All required elements present and timely; one element brief - a follow-up provider named without an interval, for example.",
+        "3": "Discharge summary present but missing one required element - commonly pending results or condition at discharge - or completed outside the organisation's own timeliness policy.",
+        "2": "Two or more required elements missing, or the summary is materially late, or discharge medications are not reconciled against the home list.",
+        "1": "No discharge summary or transition documentation for a completed encounter; or both follow-up and discharge medications absent."
+      }
+    }
+  ],
+  "scoring_method": {
+    "formula": "points = (score / 5) * weight",
+    "total": "Sum of all ten rubrics. Maximum 100.",
+    "worked_example": "Diagnostic Specificity scored 4 of 5, weight 14 -> (4/5) * 14 = 11.2 points."
+  },
+  "decision_bands": [
+    { "min": 88, "max": 100, "decision": "DOCUMENTATION ACCEPTED",     "note": "Meets documentation integrity standards. Release for coding and billing." },
+    { "min": 74, "max": 87,  "decision": "ACCEPTED WITH QUERY",        "note": "Codable, but one or more elements require a compliant provider query before final code assignment." },
+    { "min": 58, "max": 73,  "decision": "RETURN FOR CLARIFICATION",   "note": "Material gaps. Return to the author for amendment; do not finalise coding." },
+    { "min": 0,  "max": 57,  "decision": "DEFICIENT",                  "note": "Does not meet minimum documentation standards. Escalate to CDI leadership and compliance." }
+  ],
+  "severity_order": ["DOCUMENTATION ACCEPTED", "ACCEPTED WITH QUERY", "RETURN FOR CLARIFICATION", "DEFICIENT"],
+  "hard_rules": [
+    {
+      "id": "HR-1",
+      "rubric_id": "R1",
+      "trigger": "R1 (Authentication and Legal Integrity) score equals 1",
+      "action": "DEFICIENT",
+      "reason": "The record is unauthenticated. An entry that cannot be attributed to an author is not a legal record and cannot support a claim, however strong the clinical content is."
+    },
+    {
+      "id": "HR-2",
+      "rubric_id": "R5",
+      "trigger": "R5 (Diagnostic Specificity and Coding Support) score equals 1",
+      "action": "RETURN FOR CLARIFICATION",
+      "reason": "No principal diagnosis can be assigned from the narrative as written. Specificity elsewhere in the record does not substitute for a codable principal diagnosis."
+    }
+  ]
+}

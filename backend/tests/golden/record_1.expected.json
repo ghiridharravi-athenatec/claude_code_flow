@@ -1,0 +1,154 @@
+{
+  "record_filename": "record_1.txt",
+  "rubric_title": "Medical Record Narrative - Clinical Documentation Integrity Evaluation Rubric",
+  "rubric_version": "1.0",
+  "overall": {
+    "score_points": 45.0,
+    "score_max": 100,
+    "decision": "RETURN FOR CLARIFICATION",
+    "decision_note": "Material gaps. Return to the author for amendment; do not finalise coding.",
+    "hard_rules_triggered": [
+      {
+        "id": "HR-2",
+        "rubric_id": "R5",
+        "action": "RETURN FOR CLARIFICATION",
+        "reason": "No principal diagnosis can be assigned from the narrative as written. Specificity elsewhere in the record does not substitute for a codable principal diagnosis."
+      }
+    ]
+  },
+  "dimension_results": [
+    {
+      "rubric_id": "R1",
+      "name": "Authentication and Legal Integrity",
+      "weight": 8,
+      "score": 5,
+      "points_earned": 8.0,
+      "matched_level_text": "Every entry authenticated with author name, credentials, date and time. Verbal and telephone orders co-signed within policy. Amendments, corrections and late entries explicitly labelled, with the original content preserved and a reason stated. No unattributed sections.",
+      "matched_snippet": "Electronically signed by Jane Smith, MD,...",
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R2",
+      "name": "Chief Complaint and History of Present Illness",
+      "weight": 10,
+      "score": 5,
+      "points_earned": 10.0,
+      "matched_level_text": "Chief complaint stated in the patient's own terms. HPI develops the story with four or more of the eight elements (location, quality, severity, duration, timing, context, modifying factors, associated signs and symptoms), a clear chronology, and pertinent positives and negatives. Where the patient is not the historian, the source is identified.",
+      "matched_snippet": "...ane Smith, MD, on 03/14/2026 at 08:00.\n\nChief complaint: chest pain. HPI describ...",
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R3",
+      "name": "Histories, Medications, Allergies and Social Determinants",
+      "weight": 7,
+      "score": 5,
+      "points_earned": 7.0,
+      "matched_level_text": "Past medical, surgical, family and social histories documented and relevant to the presentation. Home medications reconciled with dose, route and frequency. Allergies recorded with the specific reaction. Social determinants relevant to care - housing, food security, transport, caregiver support, substance use - captured in the narrative and carried to codable Z-codes.",
+      "matched_snippet": "...ymptoms and pertinent negatives noted.\n\nPast medical history reviewed. Medicatio...",
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R4",
+      "name": "Examination and Objective Data",
+      "weight": 10,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R5",
+      "name": "Diagnostic Specificity and Coding Support",
+      "weight": 14,
+      "score": 1,
+      "points_earned": 2.8,
+      "matched_level_text": "The narrative will not support assignment of a principal diagnosis; or diagnoses appear only as 'possible', 'probable' or 'rule out' in an outpatient record, where such statements are not codable.",
+      "matched_snippet": "...requency. Allergies: NKDA.\n\nAssessment: rule out pneumonia given the clinical pi...",
+      "hard_rule_triggered": "HR-2"
+    },
+    {
+      "rubric_id": "R6",
+      "name": "Clinical Validity and Evidence Support",
+      "weight": 12,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R7",
+      "name": "Medical Decision Making, Assessment and Plan",
+      "weight": 12,
+      "score": 3,
+      "points_earned": 7.2,
+      "matched_level_text": "Assessment lists problems and the plan is generic - 'continue current management', 'follow up as needed' - without reasoning tying findings to conclusions.",
+      "matched_snippet": "...onia given the clinical picture.\n\nPlan: continue current management and reassess...",
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R8",
+      "name": "Internal Consistency and Reconciliation",
+      "weight": 9,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R9",
+      "name": "Note Hygiene, Concision and Abbreviations",
+      "weight": 8,
+      "score": "N/E",
+      "points_earned": 0.0,
+      "matched_level_text": "N/E - no evidence: the record provides no evidence either way for this dimension.",
+      "matched_snippet": null,
+      "hard_rule_triggered": null
+    },
+    {
+      "rubric_id": "R10",
+      "name": "Continuity, Timeliness and Transition of Care",
+      "weight": 10,
+      "score": 5,
+      "points_earned": 10.0,
+      "matched_level_text": "Entries authored contemporaneously with the care described, and the record completed within the regulatory window. The discharge summary carries every required element - reason for hospitalisation, significant findings, procedures and treatment provided, condition at discharge, reconciled discharge medications, follow-up arrangements naming provider and interval, and results still pending at discharge. Patient instructions documented in comprehensible terms.",
+      "matched_snippet": "...anagement and reassess in the morning.\n\nReason for hospitalisation: acute cholec...",
+      "hard_rule_triggered": null
+    }
+  ],
+  "flagged_gaps": [
+    {
+      "rubric_id": "R4",
+      "name": "Examination and Objective Data",
+      "weight": 10,
+      "score": "N/E"
+    },
+    {
+      "rubric_id": "R5",
+      "name": "Diagnostic Specificity and Coding Support",
+      "weight": 14,
+      "score": 1
+    },
+    {
+      "rubric_id": "R6",
+      "name": "Clinical Validity and Evidence Support",
+      "weight": 12,
+      "score": "N/E"
+    },
+    {
+      "rubric_id": "R8",
+      "name": "Internal Consistency and Reconciliation",
+      "weight": 9,
+      "score": "N/E"
+    },
+    {
+      "rubric_id": "R9",
+      "name": "Note Hygiene, Concision and Abbreviations",
+      "weight": 8,
+      "score": "N/E"
+    }
+  ],
+  "processed_at": "2026-08-26T10:15:00Z"
+}
