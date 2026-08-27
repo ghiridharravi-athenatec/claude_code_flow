@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from decimal import ROUND_HALF_UP, Decimal
 
 from schemas.validation_result import (
     DimensionResult,
@@ -18,10 +19,19 @@ GAP_SCORES = {"N/E", 1, 2}
 HARD_RULE_TRIGGER_PATTERN = re.compile(r"score equals (\d+)", re.IGNORECASE)
 
 
+def _round_half_up(value: float, ndigits: int = 1) -> float:
+    # Python's built-in round() is banker's rounding (round-half-to-even) and
+    # would send a value like 73.65 to 73.6 instead of 73.7. Converting through
+    # str() first (rather than Decimal(value) directly) avoids picking up
+    # binary floating-point artifacts from the float's own representation.
+    quantum = Decimal("1").scaleb(-ndigits)
+    return float(Decimal(str(value)).quantize(quantum, rounding=ROUND_HALF_UP))
+
+
 def _points_earned(score: int | str, weight: int) -> float:
     if score == "N/E":
         return 0.0
-    return round((score / 5) * weight, 1)
+    return _round_half_up((score / 5) * weight, 1)
 
 
 def _hard_rule_triggered(rule: HardRule, dimension_scores: dict[str, int | str]) -> bool:
@@ -110,7 +120,7 @@ def score_record(
     for result in dimension_results:
         result.hard_rule_triggered = triggered_by_dimension.get(result.rubric_id)
 
-    overall_score = round(total_points, 1)
+    overall_score = _round_half_up(total_points, 1)
     weighted_decision, _ = _decision_band_for_score(rubric, overall_score)
     final_decision = _resolve_final_decision(triggered_rules, weighted_decision, rubric.severity_order)
     decision_note = _note_for_decision(rubric, final_decision)
