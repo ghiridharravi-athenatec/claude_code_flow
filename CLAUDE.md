@@ -64,6 +64,7 @@ cdi-scorer/
 │   │   │   ├── CriteriaList.jsx
 │   │   │   └── GapsList.jsx
 │   │   └── styles/
+│   │       └── tokens.css   # design tokens (SPEC.md Section 7.1)
 │   └── .env
 ├── SCOPE.md
 ├── SPEC.md
@@ -140,6 +141,7 @@ Violating any of the above is treated as a bug severe enough to block the task, 
 - `camelCase` for variables/functions, `PascalCase` for component names/files.
 - API calls isolated in `src/api/client.js` — components never call `fetch` directly.
 - Handle all documented error responses from `SPEC.md` Section 4.1 distinctly enough that the user sees a message matching the actual failure (wrong file type vs. too large vs. extraction failed vs. invalid API key vs. LLM service error vs. server error) — don't collapse them into one generic "something went wrong." `invalid_api_key` specifically should point the user back to `ApiKeyGate.jsx`, not just show a generic error.
+- `SPEC.md` Section 7 (Frontend Visual Design System) is binding, not optional polish — a component that satisfies its data/behavior contract but ignores its Section 7.3 visual requirements is not done. Every color, spacing value, type size, and radius comes from the CSS custom properties in `src/styles/tokens.css` (Section 7.1) — never hardcode a hex color or a raw pixel value inline in a component or its stylesheet.
 
 **General:**
 - Match `SPEC.md`'s JSON schemas and endpoint contracts exactly — field names, status codes, and error shapes are not stylistic choices you can adjust.

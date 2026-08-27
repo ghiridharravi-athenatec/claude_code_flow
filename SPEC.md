@@ -353,6 +353,7 @@ cdi-scorer/
 │   │   │   ├── CriteriaList.jsx
 │   │   │   └── GapsList.jsx
 │   │   └── styles/
+│   │       └── tokens.css          # design tokens (Section 7.1) — the only place colors/spacing/type sizes are defined
 │   └── .env                        # REACT_APP_API_BASE_URL
 ├── SCOPE.md
 ├── SPEC.md
@@ -386,3 +387,49 @@ This section is the authoritative source for the Claude API integration added on
 - An Anthropic authentication error (invalid/revoked key) surfaces as `401 invalid_api_key` (Section 4.1, Section 4.1.1).
 - Any other Claude API failure — network error, timeout, rate limit, or a response that fails the Section 2.2 structured-output validation — surfaces as `502 llm_service_error`. These are distinguished so the frontend can show "check your API key" versus "try again in a moment" rather than one generic message.
 - `validation/llm_judge.py` shares one internal error-translation path between the scoring call (`judge_record`) and the key-check call (`validate_api_key`, backing Section 4.1.1) — both raise only `InvalidApiKeyError` or `LLMServiceError`, never a raw exception, so a route handler never has to guess what an unclassified failure means.
+
+---
+
+## 7. Frontend Visual Design System
+
+**Why this section exists:** Sections 1–6 specify data shape and behavior exhaustively but say nothing about how the UI should actually look — left unspecified, that produces an unstyled, hard-to-read app. This section is as binding as the rest of the contract: a build that satisfies Sections 1–6 but ignores this one is not spec-complete.
+
+### 7.1 Design tokens
+- All colors, spacing, type sizes, and radii are defined once as CSS custom properties in `frontend/src/styles/tokens.css`, imported once (in `index.js` or `App.jsx`) — never scattered as ad hoc/magic values across individual component stylesheets.
+- **Color palette** — semantic, tied to the app's actual signal (decision outcomes), not decorative:
+  - `--color-bg`, `--color-surface`, `--color-border`, `--color-text`, `--color-text-muted`.
+  - `--color-accepted` (green family) for `DOCUMENTATION ACCEPTED`.
+  - `--color-query` (amber family) for `ACCEPTED WITH QUERY`.
+  - `--color-clarification` (orange family) for `RETURN FOR CLARIFICATION`.
+  - `--color-deficient` (red family) for `DEFICIENT`.
+  - `--color-primary` — one accent for interactive elements (buttons, links, focus rings), independent of the decision-band colors above so the two meanings are never visually confused.
+- **Typography** — one system font stack (`-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`; no webfont dependency), a fixed type scale (13 / 14 / 16 / 20 / 28 / 36px for label / body / subhead / heading / score-display), line-height 1.5 for body text and 1.2 for headings.
+- **Spacing** — a 4px base unit (4 / 8 / 12 / 16 / 24 / 32 / 48px), applied via the custom properties above, not ad hoc per-component pixel values.
+- **Radius and elevation** — one radius for cards/inputs (8px) and a smaller one for badges/pills (4px); a single subtle shadow for cards and nothing else — flat design otherwise, not a shadow on every element.
+
+### 7.2 Layout
+- Centered single-column content area, max-width ~720px, with side padding that keeps it usable down to a 375px-wide viewport without horizontal scroll (mobile-first, not desktop-only).
+- A persistent app header (app name + the active rubric's title/version from `GET /rubrics`, Section 4.2) shown across every step.
+- Each step — key entry, upload, results — renders as its own visually distinct "card" (surface + border + padding), never a bare, unstyled block of form controls sitting directly on the page background.
+
+### 7.3 Component-specific requirements
+- **`ApiKeyGate.jsx`** — a real styled text input (type `password`) with a visible `<label>` and help text, and a submit button with three distinct visual states: idle, checking (spinner, disabled), and error (red-toned border plus an inline error message) — not plain text silently appearing or disappearing.
+- **`UploadForm.jsx`** — a clearly bounded file-selection area (at minimum a styled row showing the chosen filename, ideally a dashed-border drop-zone treatment) plus a primary submit button with a loading state during the `/validate` call (spinner, disabled — never a frozen page with no feedback).
+- **`ResultsSummary.jsx`** — the overall score is the single most visually prominent element on the results view: a large numeral (`score_points`/100), a colored decision-band badge using Section 7.1's palette, and `decision_note` as supporting text beneath — not a plain "Score: 82.4, Decision: ACCEPTED WITH QUERY" text line. When `hard_rules_triggered` is non-empty, show it as a prominent alert banner above the score, not buried in the criteria table below — a hard rule overriding the weighted decision is the single most important fact about the result.
+- **`CriteriaList.jsx`** — each of the ten dimensions as its own row/card: name, weight, and score shown as a small colored badge (Section 7.1's palette, keyed by score: 4–5 accepted-toned, 3 query-toned, 1–2 or `N/E` deficient-toned), `matched_level_text` as body copy, and `matched_snippet` (when present) visually set apart as a quote — left border, italic, muted background — rather than inline plain text.
+- **`GapsList.jsx`** — visually distinct from `CriteriaList`, not a duplicate plain list: a clearly separated "Flagged Gaps" section with a warning-toned header, since its entire purpose is to draw the eye to what needs attention.
+
+### 7.4 States every screen must handle visually
+- **Loading** (API key check, or the `/validate` call in flight) — a visible spinner/progress indicator, submit controls disabled, no possibility of a duplicate double-submit.
+- **Error** (every error code in Section 4.1/4.1.1's tables) — a styled inline message (CLAUDE.md already requires each error code to map to a distinct, specific message; this section requires that message be *styled* — e.g. a red-toned inline banner — never a raw browser `alert()` or an unstyled text dump).
+- **Empty/initial** — nothing renders looking broken or like a placeholder was forgotten (e.g. `UploadForm` before any file is chosen shows real, styled empty-state copy, not blank space).
+
+### 7.5 Accessibility baseline
+- Every text/background color pairing defined in 7.1 meets WCAG AA contrast (4.5:1 for body text) — a real constraint on the palette values chosen, not a stylistic afterthought.
+- Every interactive element has a visible focus state (outline or ring) — never `outline: none` with nothing substituted in its place.
+- Every form input has an associated `<label>`, not a placeholder standing in for one.
+
+### 7.6 What this section deliberately does not require
+- No CSS framework or component library (Tailwind, MUI, Bootstrap, styled-components, etc.) — plain CSS with the custom-property token system in 7.1 is sufficient, and keeps `frontend/package.json`'s dependency list exactly as it already is. Adding one later is a "new dependency" decision under CLAUDE.md's "When to ask" rule, not something this section pre-authorizes.
+- No animation/motion design beyond simple state transitions (e.g. `transition: background-color 150ms` on interactive elements) — no page-transition library, no complex choreography.
+- No dark mode or theming toggle — one fixed light palette, consistent with the rest of this app's no-configuration-surface posture (SCOPE.md).
